@@ -1,12 +1,15 @@
 import re
 import sys
+# ifnotweb
 import inspect
 import readline
 import textwrap
-import random
 from copy import deepcopy
 from functools import partial
+# endnotweb
+import random
 from itertools import zip_longest
+# ifnotweb
 try:
     from shutil import get_terminal_size
 except ImportError:
@@ -14,7 +17,7 @@ except ImportError:
 else:
     def get_terminal_size(fallback=(80, 24)):
         return fallback
-
+# endnotweb
 
 __all__ = (
     'when',

@@ -23,6 +23,11 @@ setup(
     extras_require={
         'web': ['transcrypt']
     },
+    entry_points={
+        'console_scripts': [
+            'adventure2web = adventure2web:main'
+        ],
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Education',
