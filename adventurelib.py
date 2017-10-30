@@ -127,7 +127,7 @@ class Item:
         return self.name
 
 
-class Bag(set):
+class Bag:
     """A collection of Items, such as in an inventory.
 
     Behaves very much like a set, but the 'in' operation is overloaded to
@@ -135,13 +135,16 @@ class Bag(set):
     by name.
 
     """
+    def __init__(self):
+        self._impl = set()
+
     def find(self, name):
         """Find an object in the bag by name, but do not remove it.
 
         Return None if the name does not match.
 
         """
-        for item in self:
+        for item in self._impl:
             if name.lower() in item.aliases:
                 return item
         return None
@@ -168,7 +171,7 @@ class Bag(set):
         """
         obj = self.find(name)
         if obj is not None:
-            self.remove(obj)
+            self._impl.remove(obj)
         return obj
 
     def get_random(self):
@@ -177,10 +180,10 @@ class Bag(set):
         Return None if the bag is empty.
 
         """
-        if not self:
+        if not self._impl:
             return None
-        which = random.randrange(len(self))
-        for index, obj in enumerate(self):
+        which = random.randrange(len(self._impl))
+        for index, obj in enumerate(self._impl):
             if index == which:
                 return obj
 
@@ -192,7 +195,7 @@ class Bag(set):
         """
         obj = self.get_random()
         if obj is not None:
-            self.remove(obj)
+            self._impl.remove(obj)
         return obj
 
 
