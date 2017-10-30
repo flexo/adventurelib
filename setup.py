@@ -20,6 +20,9 @@ setup(
     url='https://adventurelib.readthedocs.io/',
     py_modules=['adventurelib'],
     install_requires=requirements,
+    extras_require={
+        'web': ['transcrypt']
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Education',
